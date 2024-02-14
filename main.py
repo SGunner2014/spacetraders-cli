@@ -4,5 +4,4 @@ api_token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiRVhfQ0FMTF
 
 space_client = SpaceClient(api_token)
 ships = space_client.ships.get_ships()
-
-print(ships[0].frame.symbol.value)
+ship = space_client.ships.get_ship(ships[0].symbol)

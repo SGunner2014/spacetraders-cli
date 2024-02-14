@@ -19,7 +19,7 @@ class __GenericClient():
     def __init__(self, token):
         self.token = token
 
-    def make_request(self, url, method, data=None, expected: type = None) -> object:
+    def make_request(self, url, method, data=None) -> object:
         response = requests.request(
             method,
             f"{self.root_url}{url}",

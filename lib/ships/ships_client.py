@@ -9,9 +9,17 @@ class ShipsClient(__GenericClient):
     last_fetched = None
 
     def get_ships(self) -> List[ship]:
-        ships = self.make_request("/my/ships", "GET", expected=List[ship])
+        ships = self.make_request("/my/ships", "GET")
 
         self.ships_list = ships.data
         self.last_fetched = datetime.now()
 
         return ships.data
+
+    def get_ship(self, symbol: str) -> ship:
+        ship = self.make_request(f"/my/ships/{symbol}", "GET")
+
+        return ship.data
+
+    def purchase_ship(self, ship_type: ship_type, waypoint_symbol: str):
+        pass

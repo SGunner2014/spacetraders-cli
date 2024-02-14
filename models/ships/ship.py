@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Literal
 
 class ship_role(Enum):
     FABRICATOR = "FABRICATOR"
@@ -35,11 +36,11 @@ class location_type(Enum):
 class ship_registration:
     name: str
     factionSymbol: str
-    role: ship_role
+    role: Literal[ship_role]
 
 class nav_location:
     symbol: str
-    type: location_type
+    type: Literal[location_type]
     systemSymbol: str
     x: int
     y: int
@@ -65,8 +66,8 @@ class ship_nav:
     systemSymbol: str
     waypointSymbol: str
     route: nav_route
-    status: nav_status
-    flightMode: flight_mode
+    status: Literal[nav_status]
+    flightMode: Literal[flight_mode]
 
 class crew_rotation(Enum):
     STRICT = "STRICT"
@@ -76,7 +77,7 @@ class ship_crew:
     current: int
     required: int
     capacity: int
-    rotation: crew_rotation
+    rotation: Literal[crew_rotation]
     morale: int
     wages: int
 
@@ -97,8 +98,35 @@ class ship_frame_symbol(Enum):
     FRAME_CRUISER = "FRAME_CRUISER"
     FRAME_CARRIER = "FRAME_CARRIER"
 
+class ship_frame_requirements:
+    power: int
+    crew: int
+    slots: int
+
 class ship_frame:
-    symbol: ship_frame_symbol
+    symbol: Literal[ship_frame_symbol]
+    name: str
+    description: str
+    condition: int
+    moduleSlots: int
+    mountingPoints: int
+    fuelCapacity: int
+    requirements: ship_frame_requirements
+
+class ship_reactor_symbol(Enum):
+    REACTOR_SOLAR_I = "REACTOR_SOLAR_I"
+    REACTOR_FUSION_I = "REACTOR_FUSION_I"
+    REACTOR_FISSION_I = "REACTOR_FISSION_I"
+    REACTOR_CHEMICAL_I = "REACTOR_CHEMICAL_I"
+    REACTOR_ANTIMATTER_I = "REACTOR_ANTIMATTER_I"
+
+class ship_reactor:
+    symbol: Literal[ship_reactor_symbol]
+    name: str
+    description: str
+    condition: int
+    powerOutput: int
+    requirements: ship_frame_requirements
 
 class ship:
     symbol: str
@@ -106,3 +134,4 @@ class ship:
     nav: ship_nav
     crew: ship_crew
     frame: ship_frame
+    reactor: ship_reactor
