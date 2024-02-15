@@ -1,6 +1,11 @@
 import requests
 from collections.abc import Mapping
 
+reserved_mappings: dict = {
+    "yield": "yield_", # yield is a reserved keyword in Python
+    "type": "type_", # type is a reserved keyword in Python
+}
+
 class Dict2Obj(object):
     def __init__(self, dict_data):
         for key in dict_data:
