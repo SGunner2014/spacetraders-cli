@@ -4,6 +4,7 @@ from collections.abc import Mapping
 reserved_mappings: dict = {
     "yield": "yield_", # yield is a reserved keyword in Python
     "type": "type_", # type is a reserved keyword in Python
+    "range": "range_", # range is a reserved keyword in Python
 }
 
 class Dict2Obj(object):

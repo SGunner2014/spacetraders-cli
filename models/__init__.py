@@ -36,3 +36,6 @@ from .ShipCrew import ship_crew
 from .ShipRequirements import ship_requirements
 from .ShipEngine import ship_engine
 from .ShipFrame import ship_frame
+from .ShipReactor import ship_reactor
+from .ShipModule import ship_module
+from .ShipMount import ship_mount

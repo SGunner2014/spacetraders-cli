@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import List
 
 from lib.generic_client import __GenericClient
-from models.ships.ship import ship
+from models import ship
 
 class ShipsClient(__GenericClient):
     ships_list: List[ship] = []
