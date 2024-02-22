@@ -1,3 +1,5 @@
+from typing import List
+
 from . import (
     ship_registration,
     ship_nav,

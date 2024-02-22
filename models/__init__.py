@@ -39,3 +39,7 @@ from .ShipFrame import ship_frame
 from .ShipReactor import ship_reactor
 from .ShipModule import ship_module
 from .ShipMount import ship_mount
+from .ShipCargoItem import ship_cargo_item
+from .ShipCargo import ship_cargo
+from .ShipFuel import ship_fuel
+from .Ship import ship
