@@ -1,10 +1,12 @@
 from datetime import datetime
 from typing import List
 
-from lib.generic_client import __GenericClient
+from clients.generic_client import __GenericClient
 from models import ship
+from exceptions.ShipNotFoundException import ShipNotFoundException
 
 class ShipsClient(__GenericClient):
+    selected_ship: str = None
     ships_list: List[ship] = []
     last_fetched = None
 
@@ -21,5 +23,11 @@ class ShipsClient(__GenericClient):
 
         return ship.data
 
-    def purchase_ship(self, ship_type: ship_type, waypoint_symbol: str):
-        pass
+    # def purchase_ship(self, ship_type: ship_type, waypoint_symbol: str):
+    #     pass
+
+    def select_ship(self, ship_symbol: str):
+        if self.ships_list and ship_symbol in self.ships_list:
+            self.selected_ship = ship_symbol
+        else:
+            raise ShipNotFoundException()

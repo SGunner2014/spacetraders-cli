@@ -1,0 +1,2 @@
+class ShipNotFoundException(Exception):
+    pass

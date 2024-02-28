@@ -1,13 +1,18 @@
-# from lib.space_client import SpaceClient
+from clients.space_client import SpaceClient
+from commands import ships_command
 
-# api_token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiRVhfQ0FMTFNJR05fMiIsInZlcnNpb24iOiJ2Mi4xLjUiLCJyZXNldF9kYXRlIjoiMjAyNC0wMi0xMSIsImlhdCI6MTcwNzc0ODUxNCwic3ViIjoiYWdlbnQtdG9rZW4ifQ.gza8wfjs8t8KP1LqBKTYBYrhrva5Aiw_hwQq9tro50fwSpZc0_urm8b3CR6ZhSTjkjzYY1qDugkZatWCTYApqGHdzPPU6HqDqKTEEEhHnKyufhbZH_By1ehzz38MkmDg1-rgcUZw1-pxyUVr7U1ZTdTbaUpJoU0EFu6TSYpZ6VRQUuf8mLfrSa2k3ZA6K1_SHRk9yUrBnQZRaZVGXB6o9NWco1L69XnLFm3SBPuayrQ5nTPlj_tRIhXOARbIlGhnYKv1MJOuvHQZcoVwZ59UIHhRPpB7LPcwPUWbDlG5cCo3E2Xq1mlGKdgT_58TkU6b0iR8_AdCv2YjTXTn0KQxQQ"
+api_token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiRVhfQ0FMTFNJR04iLCJ2ZXJzaW9uIjoidjIuMS41IiwicmVzZXRfZGF0ZSI6IjIwMjQtMDItMjUiLCJpYXQiOjE3MDg5MDgwNjUsInN1YiI6ImFnZW50LXRva2VuIn0.guEsxQgWbnnmImUBE-L5yIHXfQBPWyOZt835F8kQVMXWqGDcpumjhSCE0Gnqqw4LYtUJxPQ66iVH4kiuDkjnBo_qJnVn35itpIj-xkxKHWWjSFbvT16Cf3S8eJkZwqS_jyeUjhMICMhsexIIi8Uma5fKyDudMlZh8CJeDsVwikBd39FXQvEQVaEd91ZJj8kP0XbzjYP-ufULy-kH_Jbq_gQayMLGae8xCYdh4D5QPVTg1mxpHDMAa6-TJCgZ7rUNVPog_tRdc1kHQWxspoLG-mWwCEJROPTWUoyRNGeA7KGfdDokJyAj5E_g98JTJv-wiTkf4WoqncSmmDtg1Or3pg"
 
-# space_client = SpaceClient(api_token)
-# ships = space_client.ships.get_ships()
+space_client = SpaceClient(api_token)
 
-# print(ships[0].frame.symbol.value)
+commands = []
+commands.append(ships_command(space_client))
+print(commands[0].name)
 
-from models import market_trade_good
-
-market: market_trade_good = market_trade_good()
-market.purchasePrice = 500
+while True:
+    command = input("> ")
+    commandParts = command.split(" ")
+    for command in commands:
+        if command.name == commandParts[0].lower():
+            command.on_invoke(commandParts)
+            break

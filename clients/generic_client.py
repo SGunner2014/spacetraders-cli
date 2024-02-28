@@ -34,6 +34,7 @@ class __GenericClient():
             },
             data=data,
         )
+        response.raise_for_status()
 
         json = response.json()
 

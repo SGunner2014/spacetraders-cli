@@ -1,4 +1,4 @@
-from lib.ships.ships_client import ShipsClient
+from clients.ships.ships_client import ShipsClient
 
 class SpaceClient:
     def __init__(self, token):
