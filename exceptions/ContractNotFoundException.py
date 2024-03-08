@@ -1,0 +1,2 @@
+class ContractNotFoundException(Exception):
+    pass

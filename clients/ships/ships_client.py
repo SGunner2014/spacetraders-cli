@@ -23,11 +23,15 @@ class ShipsClient(__GenericClient):
 
         return ship.data
 
-    # def purchase_ship(self, ship_type: ship_type, waypoint_symbol: str):
-    #     pass
+    def purchase_ship(self):
+        pass
 
     def select_ship(self, ship_symbol: str):
-        if self.ships_list and ship_symbol in self.ships_list:
-            self.selected_ship = ship_symbol
+        if self.ships_list:
+            for ship in self.ships_list:
+                if ship.registration.name == ship_symbol:
+                    self.selected_ship = ship_symbol
+                    return
+            raise ShipNotFoundException()
         else:
             raise ShipNotFoundException()
